@@ -35,7 +35,7 @@ const schema = yup.object({
 async function onSubmit(values) {
   try {
     apiError.value = ''
-    isLoading.value=true
+    isLoading.value = true
 
     const res = await axios.post('https://reqres.in/api/register', {
       email: values.email,
@@ -43,11 +43,10 @@ async function onSubmit(values) {
     })
     const token = res.data.token
     localStorage.setItem('token', token)
-  } catch(err) {
+  } catch (err) {
     apiError.value = err.response?.data?.error || 'خطا در ثبت نام'
-  }
-  finally{
-    isLoading.value=false
+  } finally {
+    isLoading.value = false
   }
 }
 </script>
@@ -81,7 +80,8 @@ async function onSubmit(values) {
           as="input"
           type="text"
           placeholder="نام و نام خانوادگی"
-          class="w-full border rounded-lg p-3 outline-none focus:border-purple-600 border-purple-200 shadow-sm shadow-purple-300 placeholder:text-purple-400"
+          class="w-full border rounded-lg p-3 outline-none focus:border-purple-600 bg-white
+           border-purple-200 shadow-sm shadow-purple-300 placeholder:text-purple-400"
         />
         <ErrorMessage name="fullName" class="text-red-500 text-sm mt-2 block" />
       </div>
@@ -95,7 +95,8 @@ async function onSubmit(values) {
           as="input"
           type="email"
           placeholder="ایمیل"
-          class="w-full border rounded-lg p-3 outline-none focus:border-purple-600 border-purple-200 shadow-sm shadow-purple-300 placeholder:text-purple-400"
+          class="w-full border rounded-lg p-3 outline-none focus:border-purple-600 bg-white
+            border-purple-200 shadow-sm shadow-purple-300 placeholder:text-purple-400"
         />
         <ErrorMessage name="email" class="text-red-500 text-sm mt-2 block" />
       </div>
@@ -110,7 +111,8 @@ async function onSubmit(values) {
           as="input"
           type="tel"
           placeholder="شماره موبایل"
-          class="w-full border rounded-lg p-3 outline-none focus:border-purple-600 placeholder:text-right border-purple-200 shadow-sm shadow-purple-300 placeholder:text-purple-400"
+          class="w-full border rounded-lg p-3 bg-white
+           outline-none focus:border-purple-600 placeholder:text-right border-purple-200 shadow-sm shadow-purple-300 placeholder:text-purple-400"
         />
         <ErrorMessage name="phone" class="text-red-500 text-sm mt-2 block" />
       </div>
@@ -125,7 +127,8 @@ async function onSubmit(values) {
           as="input"
           type="password"
           placeholder="رمز عبور"
-          class="w-full border rounded-lg p-3 outline-none focus:border-purple-600 border-purple-200 shadow-sm shadow-purple-300 placeholder:text-purple-400"
+          class="w-full border rounded-lg p-3 outline-none
+          bg-white  focus:border-purple-600 border-purple-200 shadow-sm shadow-purple-300 placeholder:text-purple-400"
         />
         <ErrorMessage name="password" class="text-red-500 text-sm mt-2 block" />
       </div>
@@ -140,20 +143,23 @@ async function onSubmit(values) {
           as="input"
           type="password"
           placeholder="تکرار رمز عبور"
-          class="w-full border rounded-lg p-3 outline-none focus:border-purple-600 border-purple-200 shadow-sm shadow-purple-300 placeholder:text-purple-400"
+          class="w-full border rounded-lg p-3 outline-none bg-white
+           focus:border-purple-600 border-purple-200 shadow-sm shadow-purple-300 placeholder:text-purple-400"
         />
         <ErrorMessage name="confirmPassword" class="text-red-500 text-sm mt-2 block" />
       </div>
 
       <p v-if="apiError" class="text-red-500 text-sm text-center">
-  {{ apiError }}
-</p>
-      <button 
+        {{ apiError }}
+      </p>
+      <button
         type="submit"
         class="bg-purple-700 text-white rounded-lg py-3 hover:bg-purple-800 transition"
       >
-       {{ isLoading?"در حال ثبت ...":"ثبت نام" }}
+        {{ isLoading ? 'در حال ثبت ...' : 'ثبت نام' }}
       </button>
     </Form>
   </div>
 </template>
+
+
