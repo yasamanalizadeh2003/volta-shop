@@ -84,6 +84,16 @@ const navLinks = [
             </span>
           </div>
         </div>
+        <div v-else class="flex gap-5">
+            <RouterLink to="/signup" class="cursor-pointer hover:scale-105 transition py-1 px-2 rounded-lg text-white
+             bg-gradient-to-br from-purple-800  to-purple-600">
+                عضویت
+            </RouterLink>
+            <RouterLink to="login" class="cursor-pointer  hover:scale-105 transition py-1 px-2 rounded-lg text-white
+             bg-gradient-to-br from-purple-800  to-purple-600">
+                ورود
+            </RouterLink>
+        </div>
 
         <!-- Mobile Menu Button -->
         <button class="lg:hidden" @click="mobileMenu = !mobileMenu">
