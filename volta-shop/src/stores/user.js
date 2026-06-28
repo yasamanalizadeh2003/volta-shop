@@ -24,7 +24,12 @@ export const useUserStore = defineStore('user', () => {
         {
           email: values.email,
           password: values.password,
-        }
+        },
+        {
+          headers: {
+            'x-api-key': 'free_user_3FkoYMBPcrobfLhe5kytHTb8OUy',
+          },
+        },
       )
 
       token.value = res.data.token
@@ -34,8 +39,7 @@ export const useUserStore = defineStore('user', () => {
 
       return true
     } catch (err) {
-      apiError.value =
-        err.response?.data?.error || 'خطا در ثبت نام'
+      apiError.value = err.response?.data?.error || 'خطا در ثبت نام'
 
       return false
     } finally {
@@ -46,6 +50,7 @@ export const useUserStore = defineStore('user', () => {
   // Login
   async function login(values) {
     try {
+      console.log(values)
       isLoading.value = true
       apiError.value = ''
       success.value = ''
@@ -55,7 +60,12 @@ export const useUserStore = defineStore('user', () => {
         {
           email: values.email,
           password: values.password,
-        }
+        },
+        {
+          headers: {
+            'x-api-key': 'free_user_3FkoYMBPcrobfLhe5kytHTb8OUy',
+          },
+        },
       )
 
       token.value = res.data.token
@@ -65,9 +75,7 @@ export const useUserStore = defineStore('user', () => {
 
       return true
     } catch (err) {
-      apiError.value =
-        err.response?.data?.error || 'خطا در ورود'
-
+      apiError.value = err.response?.data?.error || 'خطا در ورود'
       return false
     } finally {
       isLoading.value = false
