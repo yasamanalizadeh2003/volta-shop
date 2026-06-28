@@ -1,16 +1,23 @@
 <script setup>
-import axios from 'axios'
+import { useUserStore } from '../stores/user'
 import { Form, Field, ErrorMessage } from 'vee-validate'
-import { ref } from 'vue'
-import * as yup from 'yup'
-
 import { useRouter } from 'vue-router'
-
+import * as yup from 'yup'
 const router = useRouter()
 
-const apiError = ref('')
-const success = ref('')
-const isLoading = ref(false)
+
+
+const store=useUserStore()
+
+async function onSubmit(values) {
+  const ok = await store.register(values)
+
+  if (ok) {
+  setTimeout(() => {
+    router.push('/')
+  }, 1000)
+}
+}
 
 const schema = yup.object({
   fullName: yup
@@ -36,27 +43,6 @@ const schema = yup.object({
     .oneOf([yup.ref('password')], 'رمز عبور مطابقت ندارد'),
 })
 
-async function onSubmit(values) {
-  try {
-    apiError.value = ''
-    isLoading.value = true
-
-    const res = await axios.post('https://reqres.in/api/register', {
-      email: values.email,
-      password: values.password,
-    })
-    const token = res.data.token
-    localStorage.setItem('token', token)
-    success.value = 'ثبت نام با موفقیت انجام شد'
-    setTimeout(() => {
-      router.push('/')
-    }, 800)
-  } catch (err) {
-    apiError.value = err.response?.data?.error || 'خطا در ثبت نام'
-  } finally {
-    isLoading.value = false
-  }
-}
 </script>
 
 <template>
@@ -152,18 +138,18 @@ async function onSubmit(values) {
         />
         <ErrorMessage name="confirmPassword" class="text-red-500 text-sm mt-2 block" />
       </div>
-      <p v-if="success" class="text-green-600 text-sm text-center">
-        {{ success }}
+      <p v-if="store.success" class="text-green-600 text-sm text-center">
+        {{ store.success }}
       </p>
-      <p v-if="apiError" class="text-red-500 text-sm text-center">
-        {{ apiError }}
+      <p v-if="store.apiError" class="text-red-500 text-sm text-center">
+        {{ store.apiError }}
       </p>
       <button
-        :disabled="isLoading"
+        :disabled="store.isLoading"
         type="submit"
         class="bg-purple-700 text-white rounded-lg py-3 hover:bg-purple-800 transition disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {{ isLoading ? 'در حال ثبت ...' : 'ثبت نام' }}
+        {{ store.isLoading ? 'در حال ثبت ...' : 'ثبت نام' }}
       </button>
     </Form>
   </div>
