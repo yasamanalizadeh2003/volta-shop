@@ -1,5 +1,6 @@
 <script setup>
 import Hero from '@/homecomponents/Hero.vue';
+import Options from '@/homecomponents/Options.vue';
 
 
 
@@ -9,6 +10,7 @@ import Hero from '@/homecomponents/Hero.vue';
 <template>
     <div>
         <Hero/>
+        <Options/>
 
     </div>
 </template>
