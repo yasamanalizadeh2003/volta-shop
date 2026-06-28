@@ -46,111 +46,184 @@ const schema = yup.object({
 </script>
 
 <template>
-  <div>
-    <!-- header -->
-    <div class="flex justify-center mt-3 items-center">
-      <div class="flex flex-col items-center gap-6">
-        <h1 class="text-purple-700 font-semibold text-4xl">ولتا</h1>
-        <div class="flex items-center flex-col gap-2">
-          <h1 class="text-black font-semibold text-4xl">ثبت نام</h1>
-          <p class="text-gray-400">برای ساخت حساب کاربری اطلاعات خود را وارد کنید</p>
-        </div>
+  <div
+    class="min-h-screen flex flex-col justify-center py-8 px-5"
+  >
+    <!-- Header -->
+    <div class="text-center mb-8">
+     
+
+      <div class="space-y-1">
+        <h2 class="text-2xl sm:text-3xl font-semibold">
+          ثبت نام
+        </h2>
+
+        <p class="text-sm sm:text-base text-gray-500">
+          برای ساخت حساب کاربری اطلاعات خود را وارد کنید.
+        </p>
       </div>
     </div>
 
-    <!-- form -->
+    <!-- Form -->
     <Form
       :validation-schema="schema"
       @submit="onSubmit"
-      class="flex flex-col gap-5 w-full sm:w-[80%] lg:w-[30%] mx-auto mt-6 mb-10 px-4 sm:px-0"
+      class="w-full max-w-md mx-auto bg-white rounded-2xl shadow-lg p-6 flex flex-col gap-2 shadow-purple-300"
     >
       <!-- Full Name -->
       <div>
-        <label for="fullName" class="block mb-2 text-sm lg:text-base text-purple-900">
+        <label
+          for="fullName"
+          class="block mb-2 text-sm sm:text-base text-purple-900"
+        >
           نام و نام خانوادگی
         </label>
+
         <Field
           name="fullName"
           as="input"
           type="text"
           placeholder="نام و نام خانوادگی"
-          class="w-full border rounded-lg p-3 outline-none focus:border-purple-600 bg-white border-purple-200 shadow-sm shadow-purple-300 placeholder:text-purple-400"
+          class="w-full p-3 rounded-lg border border-purple-200 shadow-sm shadow-purple-200 outline-none focus:border-purple-600 placeholder:text-purple-400"
         />
-        <ErrorMessage name="fullName" class="text-red-500 text-sm mt-2 block" />
+
+        <ErrorMessage
+          name="fullName"
+          class="text-red-500 text-sm mt-2 block"
+        />
       </div>
 
       <!-- Email -->
-
       <div>
-        <label for="email" class="block mb-2 text-sm lg:text-base text-purple-900">ایمیل</label>
+        <label
+          for="email"
+          class="block mb-2 text-sm sm:text-base text-purple-900"
+        >
+          ایمیل
+        </label>
+
         <Field
           name="email"
           as="input"
           type="email"
           placeholder="ایمیل"
-          class="w-full border rounded-lg p-3 outline-none focus:border-purple-600
-           bg-white border-purple-200 shadow-sm shadow-purple-300 placeholder:text-purple-400"
+          class="w-full p-3 rounded-lg border border-purple-200 shadow-sm shadow-purple-200 outline-none focus:border-purple-600 placeholder:text-purple-400"
         />
-        <ErrorMessage name="email" class="text-red-500 text-sm mt-2 block" />
+
+        <ErrorMessage
+          name="email"
+          class="text-red-500 text-sm mt-2 block"
+        />
       </div>
 
       <!-- Phone -->
       <div>
-        <label for="phone" class="block mb-2 text-sm lg:text-base text-purple-900"
-          >شماره موبایل</label
+        <label
+          for="phone"
+          class="block mb-2 text-sm sm:text-base text-purple-900"
         >
+          شماره موبایل
+        </label>
+
         <Field
           name="phone"
           as="input"
           type="tel"
           placeholder="شماره موبایل"
-          class="w-full border rounded-lg p-3 bg-white outline-none focus:border-purple-600 placeholder:text-right border-purple-200 shadow-sm shadow-purple-300 placeholder:text-purple-400"
+          class="w-full p-3 rounded-lg border border-purple-200 shadow-sm shadow-purple-200 outline-none focus:border-purple-600 text-right placeholder:text-purple-400"
         />
-        <ErrorMessage name="phone" class="text-red-500 text-sm mt-2 block" />
+
+        <ErrorMessage
+          name="phone"
+          class="text-red-500 text-sm mt-2 block"
+        />
       </div>
 
       <!-- Password -->
       <div>
-        <label for="password" class="block mb-2 text-sm lg:text-base text-purple-900"
-          >رمز عبور</label
+        <label
+          for="password"
+          class="block mb-2 text-sm sm:text-base text-purple-900"
         >
+          رمز عبور
+        </label>
+
         <Field
           name="password"
           as="input"
           type="password"
           placeholder="رمز عبور"
-          class="w-full border rounded-lg p-3 outline-none bg-white focus:border-purple-600 border-purple-200 shadow-sm shadow-purple-300 placeholder:text-purple-400"
+          class="w-full p-3 rounded-lg border border-purple-200 shadow-sm shadow-purple-200 outline-none focus:border-purple-600 placeholder:text-purple-400"
         />
-        <ErrorMessage name="password" class="text-red-500 text-sm mt-2 block" />
+
+        <ErrorMessage
+          name="password"
+          class="text-red-500 text-sm mt-2 block"
+        />
       </div>
 
       <!-- Confirm Password -->
       <div>
-        <label for="confirmPassword" class="block mb-2 text-sm lg:text-base text-purple-900"
-          >تکرار رمز عبور</label
+        <label
+          for="confirmPassword"
+          class="block mb-2 text-sm sm:text-base text-purple-900"
         >
+          تکرار رمز عبور
+        </label>
+
         <Field
           name="confirmPassword"
           as="input"
           type="password"
           placeholder="تکرار رمز عبور"
-          class="w-full border rounded-lg p-3 outline-none bg-white focus:border-purple-600 border-purple-200 shadow-sm shadow-purple-300 placeholder:text-purple-400"
+          class="w-full p-3 rounded-lg border border-purple-200 shadow-sm shadow-purple-200 outline-none focus:border-purple-600 placeholder:text-purple-400"
         />
-        <ErrorMessage name="confirmPassword" class="text-red-500 text-sm mt-2 block" />
+
+        <ErrorMessage
+          name="confirmPassword"
+          class="text-red-500 text-sm mt-2 block"
+        />
       </div>
-      <p v-if="store.success" class="text-green-600 text-sm text-center">
+
+      <!-- Messages -->
+      <p
+        v-if="store.success"
+        class="text-green-600 text-sm text-center"
+      >
         {{ store.success }}
       </p>
-      <p v-if="store.apiError" class="text-red-500 text-sm text-center">
+
+      <p
+        v-if="store.apiError"
+        class="text-red-500 text-sm text-center"
+      >
         {{ store.apiError }}
       </p>
+
+      <!-- Button -->
       <button
         :disabled="store.isLoading"
         type="submit"
-        class="bg-purple-700 text-white rounded-lg py-3 hover:bg-purple-800 transition disabled:opacity-50 disabled:cursor-not-allowed"
+        class="w-full py-3 rounded-lg bg-purple-700 text-white hover:bg-purple-800 transition disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {{ store.isLoading ? 'در حال ثبت ...' : 'ثبت نام' }}
+        {{ store.isLoading ? 'در حال ثبت...' : 'ثبت نام' }}
       </button>
     </Form>
+
+    <!-- Login -->
+    <div
+      class="flex flex-col sm:flex-row justify-center items-center gap-2 mt-6 text-sm sm:text-base"
+    >
+      <p class="text-gray-500">
+        حساب کاربری دارید؟
+      </p>
+
+      <RouterLink
+        to="/login"
+        class="text-purple-700 hover:text-purple-900 transition"
+      >
+        وارد شوید
+      </RouterLink>
+    </div>
   </div>
 </template>
