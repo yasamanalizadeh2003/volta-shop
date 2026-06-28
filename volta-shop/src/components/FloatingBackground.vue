@@ -12,6 +12,8 @@ import { ShoppingCart, DollarSign } from 'lucide-vue-next'
 
     <div class="icon icon6"><DollarSign :size="22" /></div>
     <div class="icon icon7"><ShoppingCart :size="28" /></div>
+     <div class="icon icon8"><ShoppingCart :size="18" /></div>
+      <div class="icon icon9"><DollarSign :size="18" /></div>
   </div>
 </template>
 
@@ -32,7 +34,7 @@ import { ShoppingCart, DollarSign } from 'lucide-vue-next'
 
 /* پخش کنترل‌شده (دور از مرکز) */
 .icon1 {
-  top: 5%;
+  top: 55%;
   left: 5%;
 }
 .icon2 {
@@ -65,6 +67,14 @@ import { ShoppingCart, DollarSign } from 'lucide-vue-next'
   left: 65%;
 }
 
+.icon8 {
+  top: 50%;
+  left: 55%;
+}
+.icon9 {
+  top: 40%;
+  right: 65%;
+}
 /* حرکت نرم */
 @keyframes float {
   0% {
