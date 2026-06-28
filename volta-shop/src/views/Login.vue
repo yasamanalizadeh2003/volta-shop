@@ -1,4 +1,5 @@
 <script setup>
+import FloatingBackground from '@/components/FloatingBackground.vue'
 import { useUserStore } from '../stores/user'
 import { Form, Field, ErrorMessage } from 'vee-validate'
 import { useRouter } from 'vue-router'
@@ -25,9 +26,16 @@ const schema = yup.object({
 </script>
 
 <template>
+  <Transition
+    appear
+    enter-active-class="transition-all duration-1500 ease-out"
+    enter-from-class="opacity-0 translate-y-6"
+    enter-to-class="opacity-100 translate-y-0"
+  >
   <div
     class="min-h-screen flex flex-col justify-center py-8 px-5"
   >
+  <FloatingBackground />
     <!-- Header -->
     <div class="text-center mb-8">
       <h1 class="text-3xl sm:text-4xl font-bold text-purple-700">
@@ -160,4 +168,5 @@ const schema = yup.object({
       </RouterLink>
     </div>
   </div>
+  </Transition>
 </template>
