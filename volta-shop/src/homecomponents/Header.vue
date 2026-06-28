@@ -1,11 +1,11 @@
 <script setup>
 import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
-import { User, ShoppingCart, Menu, X } from 'lucide-vue-next'
+import { User, ShoppingCart, Menu, X, LogOut } from 'lucide-vue-next'
 import { useUserStore } from '@/stores/user'
 
 const mobileMenu = ref(false)
-const store = useUserStore
+const store = useUserStore()
 
 const navLinks = [
   { title: 'خانه', path: '/' },
@@ -48,7 +48,7 @@ const navLinks = [
 
       <!-- Right Side -->
       <div class="flex items-center gap-4">
-        <div v-if="store.isAuthenticated">
+        <div v-if="store.isAuthenticated" class="flex items-center gap-4">
           <!-- Profile -->
           <div class="relative group">
             <User class="w-5 h-5 cursor-pointer hover:text-purple-700 transition" />
@@ -70,8 +70,21 @@ const navLinks = [
               سبد خرید
             </span>
           </div>
+
+          <div class="relative group">
+            <LogOut
+              @click="store.logout"
+              class="w-5 h-5 cursor-pointer hover:text-purple-700 transition"
+            />
+
+            <span
+              class="absolute bottom-full left-1/2 -translate-x-1/2 my-1 text-xs text-gray-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none"
+            >
+             خروج
+            </span>
+          </div>
         </div>
-        
+
         <!-- Mobile Menu Button -->
         <button class="lg:hidden" @click="mobileMenu = !mobileMenu">
           <Menu v-if="!mobileMenu" class="w-7 h-7" />
