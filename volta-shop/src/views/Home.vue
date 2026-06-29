@@ -1,6 +1,9 @@
 <script setup>
 import Hero from '@/homecomponents/Hero.vue';
 import Options from '@/homecomponents/Options.vue';
+import FavouriteCategories from '@/homecomponents/FavouriteCategories.vue';
+import ChartToppingProducts from '@/homecomponents/ChartToppingProducts.vue';
+
 
 
 
@@ -11,6 +14,8 @@ import Options from '@/homecomponents/Options.vue';
     <div>
         <Hero/>
         <Options/>
+        <FavouriteCategories/>
+        <ChartToppingProducts/>
 
     </div>
 </template>
