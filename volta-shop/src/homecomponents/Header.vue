@@ -18,7 +18,7 @@ const navLinks = [
 </script>
 
 <template>
-  <header class="w-full px-5 sm:px-8 lg:px-10 py-5">
+  <header class="w-full px-5 sm:px-8 lg:px-10 py-5 sticky top-0 z-50 bg-white shadow-md rounded-xl">
     <div class="flex items-center justify-between">
       <!-- Logo -->
       <RouterLink to="/">
@@ -86,11 +86,11 @@ const navLinks = [
         </div>
         <div v-else class="flex gap-5">
             <RouterLink to="/signup" class="cursor-pointer hover:scale-105 transition py-1 px-2 rounded-lg text-white
-             bg-gradient-to-br from-purple-800  to-purple-600">
+             bg-gradient-to-br from-purple-900  to-purple-700">
                 عضویت
             </RouterLink>
             <RouterLink to="login" class="cursor-pointer  hover:scale-105 transition py-1 px-2 rounded-lg text-white
-             bg-gradient-to-br from-purple-800  to-purple-600">
+             bg-gradient-to-br from-purple-900  to-purple-700">
                 ورود
             </RouterLink>
         </div>
