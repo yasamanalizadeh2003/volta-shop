@@ -3,6 +3,7 @@ import Hero from '@/homecomponents/Hero.vue';
 import Options from '@/homecomponents/Options.vue';
 import FavouriteCategories from '@/homecomponents/FavouriteCategories.vue';
 import ChartToppingProducts from '@/homecomponents/ChartToppingProducts.vue';
+import DiscountSection from '@/homecomponents/DiscountSection.vue';
 
 
 
@@ -16,6 +17,7 @@ import ChartToppingProducts from '@/homecomponents/ChartToppingProducts.vue';
         <Options/>
         <FavouriteCategories/>
         <ChartToppingProducts/>
+        <DiscountSection/>
 
     </div>
 </template>

@@ -10,7 +10,6 @@ import image6 from '../assets/images/ChatGPT_Image_Jun_28__2026__09_21_24_AM-rem
 import image7 from '../assets/images/ChatGPT_Image_Jun_28__2026__09_21_24_AM-removebg-preview (6).png'
 import image8 from '../assets/images/ChatGPT_Image_Jun_28__2026__09_20_46_AM-removebg-preview.png'
 
-
 const items = reactive([
   { name: 'باغ و فضای باز', url: image1 },
   { name: 'سبد و نظم دهنده', url: image2 },
@@ -19,17 +18,16 @@ const items = reactive([
   { name: 'حمام و بهداشتی', url: image5 },
   { name: 'نور پردازی', url: image6 },
   { name: 'مبلمان', url: image7 },
-   { name: 'دکوراسیون', url: image8 },
+  { name: 'دکوراسیون', url: image8 },
 ])
 </script>
 
 <template>
-  <div class="px-4">
+  <div class="px-4" data-aos="fade-up" data-aos-duration="1000">
     <h1 class="text-xl font-bold mb-3">دسته بندی های محبوب</h1>
 
     <!-- scroll container -->
     <div class="flex sm:gap-18 gap-4 overflow-x-auto scrollbar-hide pb-2">
-      
       <div
         v-for="(item, index) in items"
         :key="index"
@@ -45,7 +43,6 @@ const items = reactive([
           {{ item.name }}
         </p>
       </div>
-
     </div>
   </div>
 </template>

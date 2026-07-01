@@ -2,7 +2,7 @@
 
 <template>
   <div>
-    <div class="p-3">
+    <div class="p-3" data-aos="fade-up" data-aos-duration="1000">
       <div
         class="bg-[#ece9d2] rounded-2xl overflow-hidden flex flex-row items-center justify-between mx-3 sm:mx-5 lg:mx-7"
       >
@@ -34,29 +34,20 @@
       </div>
     </div>
     <!-- part2 -->
-   <div class="flex flex-col sm:flex-row justify-between items-center px-4 py-2 sm:px-9 sm:py-3 lg:px-12 lg:py-4 gap-4 sm:gap-0
-   border-2 border-purple-200 shadow-sm shadow-purple-300 rounded-2xl lg:mx-10 lg:my-6 sm:mx-8 sm:my-4 mx-4 my-2
-   bg-purple-50">
-  <h1 class="text-center sm:text-right text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-gray-800">
-    از جدیدترین تخفیف‌ها باخبر شوید!
-  </h1>
-  <a href="#"  
-     class="inline-block
-            w-full sm:w-auto
-            px-6 sm:px-8 py-2.5 sm:py-3
-            rounded-xl
-            text-white text-center
-            bg-gradient-to-br
-            from-purple-900
-            to-purple-700
-            hover:scale-105
-            transition
-            duration-200
-            shadow-md
-            hover:shadow-lg
-            text-sm sm:text-base">
-    عضویت
-  </a>
-</div>
+    <div
+      class="flex flex-col sm:flex-row justify-between items-center px-4 py-2 sm:px-9 sm:py-3 lg:px-12 lg:py-4 gap-4 sm:gap-0 border-2 border-purple-200 shadow-sm shadow-purple-300 rounded-2xl lg:mx-10 lg:my-6 sm:mx-8 sm:my-4 mx-4 my-2 bg-purple-50"
+    >
+      <h1
+        class="text-center sm:text-right text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-gray-800"
+      >
+        از جدیدترین تخفیف‌ها باخبر شوید!
+      </h1>
+      <a
+        href="#"
+        class="inline-block w-full sm:w-auto px-6 sm:px-8 py-2.5 sm:py-3 rounded-xl text-white text-center bg-gradient-to-br from-purple-900 to-purple-700 hover:scale-105 transition duration-200 shadow-md hover:shadow-lg text-sm sm:text-base"
+      >
+        عضویت
+      </a>
+    </div>
   </div>
 </template>
