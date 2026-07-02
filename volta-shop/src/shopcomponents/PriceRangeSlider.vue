@@ -1,6 +1,6 @@
 <!-- PriceRangeSlider.vue -->
 <script setup>
-import { ref, watch } from 'vue'
+import { ref, watch, computed } from 'vue'
 
 const props = defineProps({
   min: { type: Number, default: 0 },
@@ -12,69 +12,70 @@ const emit = defineEmits(['update:min', 'update:max'])
 const localMin = ref(props.min)
 const localMax = ref(props.max)
 
-// فقط وقتی والد تغییر می‌کند، آپدیت کن
+// نمایش با کاما
+const formattedMin = computed(() => localMin.value.toLocaleString('fa-IR'))
+const formattedMax = computed(() => localMax.value.toLocaleString('fa-IR'))
+
+const updateMin = (e) => {
+  let value = Number(e.target.value)
+  if (value > localMax.value) value = localMax.value
+  localMin.value = value
+  emit('update:min', value)
+}
+
+const updateMax = (e) => {
+  let value = Number(e.target.value)
+  if (value < localMin.value) value = localMin.value
+  localMax.value = value
+  emit('update:max', value)
+}
+
+// سینک کردن props از والد
 watch(() => props.min, (newVal) => {
-  if (newVal !== localMin.value) {
-    localMin.value = newVal
-  }
+  localMin.value = newVal
 })
 
 watch(() => props.max, (newVal) => {
-  if (newVal !== localMax.value) {
-    localMax.value = newVal
-  }
+  localMax.value = newVal
 })
-
-const onMinChange = (event) => {
-  const value = Number(event.target.value)
-  // مطمئن شو که از max بیشتر نشه
-  const finalValue = Math.min(value, localMax.value)
-  localMin.value = finalValue
-  emit('update:min', finalValue)
-}
-
-const onMaxChange = (event) => {
-  const value = Number(event.target.value)
-  // مطمئن شو که از min کمتر نشه
-  const finalValue = Math.max(value, localMin.value)
-  localMax.value = finalValue
-  emit('update:max', finalValue)
-}
-
-// نمایش با کاما
-const formatPrice = (price) => {
-  return price.toLocaleString('fa-IR')
-}
 </script>
 
 <template>
   <div class="mb-8">
-    <div class="flex justify-between items-center text-sm font-medium text-gray-700 mb-4">
-      <span>{{ formatPrice(localMin) }} <span class="text-xs">تومان</span></span>
-      <span class="text-gray-800">تا</span>
-      <span>{{ formatPrice(localMax) }} <span class="text-xs">تومان</span></span>
+    <!-- نمایش قیمت -->
+    <div class="flex justify-between  mb-6 text-sm font-medium text-gray-800">
+      <span>{{ formattedMin }} تومان</span>
+      <span class="text-violet-700">تا</span>
+      <span>{{ formattedMax }} تومان</span>
     </div>
 
-    <div class="space-y-4">
-      <!-- اسلایدر حداقل قیمت -->
-      <input 
-        type="range"
-        :value="localMin"
-        @input="onMinChange"
-        :min="0"
-        :max="localMax"
-        class="w-full accent-violet-600 cursor-pointer"
-      />
-      
-      <!-- اسلایدر حداکثر قیمت -->
-      <input 
-        type="range"
-        :value="localMax"
-        @input="onMaxChange"
-        :min="localMin"
-        :max="50000000"
-        class="w-full accent-violet-600 cursor-pointer"
-      />
+    <!-- اسلایدرها -->
+    <div class="relative space-y-6">
+      <!-- اسلایدر حداقل -->
+      <div>
+        <label class="text-xs text-gray-500 block mb-1">حداقل قیمت</label>
+        <input
+          type="range"
+          :value="localMin"
+          @input="updateMin"
+          :min="0"
+          :max="50000000"
+          class="w-full accent-violet-600 cursor-pointer"
+        />
+      </div>
+
+      <!-- اسلایدر حداکثر -->
+      <div>
+        <label class="text-xs text-gray-500 block mb-1">حداکثر قیمت</label>
+        <input
+          type="range"
+          :value="localMax"
+          @input="updateMax"
+          :min="0"
+          :max="50000000"
+          class="w-full accent-violet-600 cursor-pointer"
+        />
+      </div>
     </div>
   </div>
 </template>

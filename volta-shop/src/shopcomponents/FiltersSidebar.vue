@@ -41,11 +41,12 @@ const updateFilters = (newData) => {
     </div>
 
     <h3 class="font-semibold text-lg mb-4">محدوده قیمت</h3>
-    <PriceRangeSlider 
-      :min="filters.minPrice" 
-      :max="filters.maxPrice"
-      @update="updateFilters($event)"
-    />
+   <PriceRangeSlider 
+  :min="filters.minPrice"
+  :max="filters.maxPrice"
+  @update:min="(val) => filters.minPrice = val"
+  @update:max="(val) => filters.maxPrice = val"
+/>
 
   </div>
 </template>
