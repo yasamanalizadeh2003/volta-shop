@@ -13,7 +13,7 @@ const emit = defineEmits(['update:search', 'update:sort'])
 
 <template>
   <div
-    class="flex flex-col sm:flex-row gap-4 w-full max-w-md"
+    class="flex flex-col sm:flex-row gap-4 w-full max-w-md z-50"
     data-aos="fade-right"
     data-aos-duration="1000"
   >
