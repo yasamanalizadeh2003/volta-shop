@@ -3,9 +3,11 @@ import { ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import { User, ShoppingCart, Menu, X, LogOut } from 'lucide-vue-next'
 import { useUserStore } from '@/stores/user'
+import { useProductStore } from '@/stores/products'
 
 const mobileMenu = ref(false)
 const store = useUserStore()
+const store2 = useProductStore()
 
 const navLinks = [
   { title: 'خانه', path: '/' },
@@ -61,15 +63,19 @@ const navLinks = [
           </div>
 
           <!-- Cart -->
-          <div class="relative group">
+          <RouterLink to="/cart" class="relative group">
             <ShoppingCart class="w-5 h-5 cursor-pointer hover:text-purple-700 transition" />
-
+            <span v-if="store2.cart.length> 0"
+              class="absolute -top-2 -right-3 bg-purple-700 text-white
+               text-[10px] w-5 h-5 flex items-center justify-center rounded-full"
+              >{{ store2.cart.length }}</span
+            >
             <span
               class="absolute bottom-full left-1/2 -translate-x-1/2 my-1 text-xs text-gray-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none"
             >
               سبد خرید
             </span>
-          </div>
+          </RouterLink>
 
           <div class="relative group">
             <LogOut
@@ -80,19 +86,23 @@ const navLinks = [
             <span
               class="absolute bottom-full left-1/2 -translate-x-1/2 my-1 text-xs text-gray-400 px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition whitespace-nowrap pointer-events-none"
             >
-             خروج
+              خروج
             </span>
           </div>
         </div>
         <div v-else class="flex gap-5">
-            <RouterLink to="/signup" class="cursor-pointer hover:scale-105 transition py-1 px-2 rounded-lg text-white
-             bg-gradient-to-br from-purple-900  to-purple-700">
-                عضویت
-            </RouterLink>
-            <RouterLink to="login" class="cursor-pointer  hover:scale-105 transition py-1 px-2 rounded-lg text-white
-             bg-gradient-to-br from-purple-900  to-purple-700">
-                ورود
-            </RouterLink>
+          <RouterLink
+            to="/signup"
+            class="cursor-pointer hover:scale-105 transition py-1 px-2 rounded-lg text-white bg-gradient-to-br from-purple-900 to-purple-700"
+          >
+            عضویت
+          </RouterLink>
+          <RouterLink
+            to="login"
+            class="cursor-pointer hover:scale-105 transition py-1 px-2 rounded-lg text-white bg-gradient-to-br from-purple-900 to-purple-700"
+          >
+            ورود
+          </RouterLink>
         </div>
 
         <!-- Mobile Menu Button -->
