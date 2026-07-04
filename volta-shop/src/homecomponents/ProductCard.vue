@@ -1,11 +1,12 @@
 <script setup>
-import { Heart, ShoppingCart, Star } from 'lucide-vue-next'
+import CartIcon from '@/shopcomponents/CartIcon.vue'
+import { Heart, Star } from 'lucide-vue-next'
 
 defineProps({
   product: {
     type: Object,
-    required: true,
-  },
+    required: true
+  }
 })
 </script>
 
@@ -23,39 +24,43 @@ defineProps({
         <Heart class="w-4 h-4 text-gray-500" />
       </button>
 
-      <img :src="product.image" :alt="product.title" class="w-full h-full" />
+      <img
+        :src="product.image"
+        :alt="product.title"
+        class="w-full h-full object-cover"
+      />
     </div>
 
     <!-- اطلاعات -->
     <div class="p-4 flex flex-col justify-center items-center gap-1">
+
       <h3 class="font-bold text-sm sm:text-lg mb-2 text-gray-800 text-center line-clamp-2">
         {{ product.title }}
       </h3>
 
-      <!-- قیمت -->
       <p class="text-purple-950 text-sm sm:text-base">
-        {{ product.price.toLocaleString() }}
-        <span class="text-xs sm:text-base font-normal"> تومان </span>
+        {{ product.price.toLocaleString('fa-IR') }}
+        <span class="text-xs sm:text-base font-normal">
+          تومان
+        </span>
       </p>
 
-      <!-- امتیاز -->
       <div class="flex items-center gap-1 mb-3">
         <Star
           v-for="n in 5"
           :key="n"
           class="w-3 h-3 sm:w-4 sm:h-4"
-          :class="n <= product.rate ? 'fill-yellow-400 text-yellow-400' : 'text-gray-300'"
+          :class="n <= product.rate
+            ? 'fill-yellow-400 text-yellow-400'
+            : 'text-gray-300'"
         />
 
-        <span class="text-xs sm:text-sm text-gray-500 mr-2"> ({{ product.review }}) </span>
+        <span class="text-xs sm:text-sm text-gray-500 mr-2">
+          ({{ product.review }})
+        </span>
       </div>
 
-      <!-- دکمه -->
-      <button
-        class="hover:text-purple-800 hover:scale-105 transition flex items-center justify-center"
-      >
-        <ShoppingCart class="w-5 h-5" />
-      </button>
+      <CartIcon :product="product"/>
     </div>
   </div>
 </template>
