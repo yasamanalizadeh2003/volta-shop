@@ -7,7 +7,6 @@ import image3 from '../assets/images/asali.png'
 import image4 from '../assets/images/cheragh.png'
 
 export const useProductStore = defineStore('products', () => {
-
   const products = ref([
     {
       id: 1,
@@ -143,13 +142,13 @@ export const useProductStore = defineStore('products', () => {
     },
   ])
 
-  const toppingProducts = computed(() =>
-  products.value.filter(product => product.topping)
-)
+  
+
+  const toppingProducts = computed(() => products.value.filter((product) => product.topping))
 
   // محصولات موجود در سبد خرید
   const cart = computed(() => {
-    return products.value.filter(product => product.count > 0)
+    return products.value.filter((product) => product.count > 0)
   })
 
   // تعداد کل کالاها
@@ -157,15 +156,36 @@ export const useProductStore = defineStore('products', () => {
     return cart.value.reduce((sum, item) => sum + item.count, 0)
   })
 
-  // مبلغ کل
+  // مبلغ کل قبل از تخفیف
   const totalPrice = computed(() => {
     return cart.value.reduce((sum, item) => {
       return sum + item.price * item.count
     }, 0)
   })
 
+  // تخفیف
+  const discount = computed(() => {
+    // اگر خرید بالای 30 میلیون باشد 4 درصد تخفیف
+    if (totalPrice.value >= 30000000) {
+      return Math.floor(totalPrice.value * 0.04)
+    }
+
+    return 0
+  })
+
+  // هزینه ارسال
+  const shippingCost = computed(() => {
+    // ارسال رایگان برای خریدهای بالای یک میلیون
+    return totalPrice.value >= 1000000 ? 0 : 150000
+  })
+
+  // مبلغ نهایی
+  const finalPrice = computed(() => {
+    return totalPrice.value - discount.value + shippingCost.value
+  })
+
   function addToCart(id) {
-    const product = products.value.find(item => item.id === id)
+    const product = products.value.find((item) => item.id === id)
 
     if (product) {
       product.count = 1
@@ -173,7 +193,7 @@ export const useProductStore = defineStore('products', () => {
   }
 
   function increaseCount(id) {
-    const product = products.value.find(item => item.id === id)
+    const product = products.value.find((item) => item.id === id)
 
     if (product) {
       product.count++
@@ -181,7 +201,7 @@ export const useProductStore = defineStore('products', () => {
   }
 
   function decreaseCount(id) {
-    const product = products.value.find(item => item.id === id)
+    const product = products.value.find((item) => item.id === id)
 
     if (product && product.count > 0) {
       product.count--
@@ -189,7 +209,7 @@ export const useProductStore = defineStore('products', () => {
   }
 
   function removeFromCart(id) {
-    const product = products.value.find(item => item.id === id)
+    const product = products.value.find((item) => item.id === id)
 
     if (product) {
       product.count = 0
@@ -205,6 +225,9 @@ export const useProductStore = defineStore('products', () => {
     increaseCount,
     decreaseCount,
     removeFromCart,
-    toppingProducts
+    toppingProducts,
+    discount,
+    shippingCost,
+    finalPrice,
   }
 })
