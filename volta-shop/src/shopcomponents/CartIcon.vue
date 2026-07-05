@@ -1,5 +1,6 @@
 <script setup>
 import { useProductStore } from '@/stores/products'
+import { useUserStore } from '@/stores/user'
 
 const props = defineProps({
   product: {
@@ -9,10 +10,16 @@ const props = defineProps({
 })
 
 const store = useProductStore()
+const store2 = useUserStore()
+
 
 const addToCart = () => {
-  window.$toast(`${props.product.title} به سبد خرید اضافه شد`)
-  store.addToCart(props.product.id)
+  if (store2.isAuthenticated) {
+    window.$toast(`${props.product.title} به سبد خرید اضافه شد`, 'success')
+    store.addToCart(props.product.id)
+  } else {
+    window.$toast("ابتدا وارد سایت شوید", 'error')
+  }
 }
 
 const increase = () => {

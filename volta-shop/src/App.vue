@@ -11,8 +11,8 @@ const route = useRoute()
 const toastRef = ref(null)
 
 onMounted(() => {
-  window.$toast = (msg) => {
-    toastRef.value?.showToast(msg)
+  window.$toast = (msg, type) => {
+    toastRef.value?.showToast(msg, type)
   }
 })
 </script>
@@ -22,7 +22,7 @@ onMounted(() => {
 
     <Toast ref="toastRef" />
 
-    <Header v-if="!route.meta.hideHeader" />
+    <Header  v-if="!route.meta.hideHeader" />
 
     <div class="app-layer">
       <RouterView />
