@@ -5,15 +5,21 @@ import image1 from '../assets/images/rahati.png'
 import image2 from '../assets/images/goldan.png'
 import image3 from '../assets/images/asali.png'
 import image4 from '../assets/images/cheragh.png'
+import image5 from '../assets/images/goldan3.png'
+import image6 from '../assets/images/modernLight.png'
+import image7 from '../assets/images/minimalTable.png'
+import image8 from '../assets/images/library.png'
+import image9 from '../assets/images/goldan2.png'
+
 
 export const useProductStore = defineStore('products', () => {
   const products = ref([
     {
       id: 1,
-      title: 'صندلی ناهارخوری چوبی',
+      title: 'گلدان سرامیکی',
       price: 12500000,
-      image: 'https://picsum.photos/id/20/300/300',
-      category: 'chair',
+      image:image5,
+      category: 'decoration',
       rate: 4,
       review: 38,
       count: 0,
@@ -23,7 +29,7 @@ export const useProductStore = defineStore('products', () => {
       id: 2,
       title: 'چراغ آویز مدرن',
       price: 18900000,
-      image: 'https://picsum.photos/id/201/300/300',
+      image: image6,
       category: 'light',
       rate: 4,
       review: 38,
@@ -34,19 +40,20 @@ export const useProductStore = defineStore('products', () => {
       id: 3,
       title: 'میز کنسول مینیمال',
       price: 27900000,
-      image: 'https://picsum.photos/id/251/300/300',
+      image: image7,
       category: 'table',
       rate: 4,
       review: 38,
       count: 0,
       topping: false,
     },
+    
     {
       id: 4,
-      title: 'گلدان بتنی',
-      price: 890000,
-      image: 'https://picsum.photos/id/180/300/300',
-      category: 'decoration',
+      title: 'کتابخانه مدرن',
+      price: 32500000,
+      image: image8,
+      category: 'furniture',
       rate: 4,
       review: 38,
       count: 0,
@@ -54,9 +61,9 @@ export const useProductStore = defineStore('products', () => {
     },
     {
       id: 5,
-      title: 'آینه دیواری گرد',
-      price: 14500000,
-      image: 'https://picsum.photos/id/201/300/300',
+      title: 'گلدان',
+      price: 7500000,
+      image: image9,
       category: 'decoration',
       rate: 4,
       review: 38,
@@ -65,39 +72,6 @@ export const useProductStore = defineStore('products', () => {
     },
     {
       id: 6,
-      title: 'ساعت دیواری چوبی',
-      price: 980000,
-      image: 'https://picsum.photos/id/133/300/300',
-      category: 'decoration',
-      rate: 4,
-      review: 38,
-      count: 0,
-      topping: false,
-    },
-    {
-      id: 7,
-      title: 'کتابخانه مدرن',
-      price: 32500000,
-      image: 'https://picsum.photos/id/201/300/300',
-      category: 'furniture',
-      rate: 4,
-      review: 38,
-      count: 0,
-      topping: false,
-    },
-    {
-      id: 8,
-      title: 'لامپ رومیزی',
-      price: 7500000,
-      image: 'https://picsum.photos/id/180/300/300',
-      category: 'light',
-      rate: 4,
-      review: 38,
-      count: 0,
-      topping: false,
-    },
-    {
-      id: 9,
       title: 'صندلی راحتی نژاد',
       image: image1,
       price: 29900000,
@@ -108,7 +82,7 @@ export const useProductStore = defineStore('products', () => {
       topping: true,
     },
     {
-      id: 10,
+      id: 7,
       title: 'گلدان سرامیکی',
       image: image2,
       price: 8500000,
@@ -119,7 +93,7 @@ export const useProductStore = defineStore('products', () => {
       topping: true,
     },
     {
-      id: 11,
+      id: 8,
       title: 'میز عسلی چوبی',
       image: image3,
       price: 2350000,
@@ -130,7 +104,7 @@ export const useProductStore = defineStore('products', () => {
       topping: true,
     },
     {
-      id: 12,
+      id: 9,
       title: 'چراغ مدرن',
       image: image4,
       price: 1530000,
