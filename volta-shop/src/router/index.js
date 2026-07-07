@@ -5,6 +5,7 @@ import Shop from '@/views/Shop.vue'
 import Cart from '@/views/Cart.vue'
 
 import { createRouter, createWebHistory } from 'vue-router'
+import ProductDetail from '@/views/ProductDetail.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -54,6 +55,12 @@ const router = createRouter({
       component: Cart,
       meta: { requiresHeader: true, requiresFooter: true },
     },
+    {
+  path: '/product/:id',
+  name: 'ProductDetails',
+  component:ProductDetail,
+  meta: { requiresHeader: true, requiresFooter: true },
+}
   ],
 })
 
