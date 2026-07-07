@@ -10,7 +10,8 @@ const formatPrice = (price) => {
 <template>
   <div>
     <div
-      class="bg-white rounded-2xl mx-3 sm:mr-6 px-3 py-6 sm:px-5 sm:w-[26%] mt-3 sm:mt-5 shadow-lg shadow-purple-200 flex flex-col gap-2"
+      class="bg-white rounded-2xl mx-3 sm:mr-6 px-3 py-6 sm:px-5 
+        shadow-lg shadow-purple-200 flex flex-col gap-2 mb-4"
     >
       <h1 class="text-lg font-bold mb-3">خلاصه سفارش</h1>
       <div class="flex justify-between">

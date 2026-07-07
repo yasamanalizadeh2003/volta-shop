@@ -1,11 +1,28 @@
 import Home from '../views/Home.vue'
 import Signup from '../views/Signup.vue'
-import { createRouter, createWebHistory } from 'vue-router'
 import Login from '../views/Login.vue'
 import Shop from '@/views/Shop.vue'
+import Cart from '@/views/Cart.vue'
+
+import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
+
+  scrollBehavior(to, from, savedPosition) {
+    // اگر کاربر با Back یا Forward جابه‌جا شد
+    if (savedPosition) {
+      return savedPosition
+    }
+
+    // هنگام رفتن به صفحات جدید
+    return {
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    }
+  },
+
   routes: [
     {
       path: '/',
@@ -29,6 +46,12 @@ const router = createRouter({
       path: '/shop',
       name: 'shop',
       component: Shop,
+      meta: { requiresHeader: true, requiresFooter: true },
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: Cart,
       meta: { requiresHeader: true, requiresFooter: true },
     },
   ],
