@@ -56,7 +56,7 @@ defineProps({
         />
 
         <span class="text-xs sm:text-sm text-gray-500 mr-2">
-          ({{ product.review }})
+          ({{ product.reviews.length }})
         </span>
       </div>
 
