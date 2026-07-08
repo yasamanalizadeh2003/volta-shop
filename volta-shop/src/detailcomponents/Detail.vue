@@ -21,11 +21,11 @@ const formatPrice = (price) => {
 <template>
   <div>
     <div class="mt-32 grid grid-cols-2">
-      <img class="sm:w-96 sm:h-96 rounded-lg sm:mr-18" :src="product.image" />
+      <img class="sm:w-96 sm:h-96 rounded-lg sm:mr-18 w-36 h-36 mr-3" :src="product.image" />
       <div class="flex flex-col gap-2">
         <h1 class="font-bold text-2xl">{{ product.title }}</h1>
         <div class="flex gap-2 mt-5">
-          <p class="text-gray-700 self-start">({{ product.review }})نظر</p>
+          <p class="text-gray-700 self-start">({{ product.reviews.length }})نظر</p>
           <div class="mt-1">
             <div class="flex items-center gap-1 mb-3">
               <Star
