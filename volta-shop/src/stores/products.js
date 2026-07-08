@@ -21,7 +21,6 @@ const products = ref([
       image: image5,
       category: 'decoration',
       rate: 4,
-      review: 38,
       count: 0,
       topping: false,
 
@@ -61,7 +60,6 @@ const products = ref([
       image: image6,
       category: 'light',
       rate: 4,
-      review: 38,
       count: 0,
       topping: false,
 
@@ -101,7 +99,6 @@ const products = ref([
       image: image7,
       category: 'table',
       rate: 4,
-      review: 38,
       count: 0,
       topping: false,
 
@@ -141,7 +138,6 @@ const products = ref([
       image: image8,
       category: 'furniture',
       rate: 4,
-      review: 38,
       count: 0,
       topping: false,
 
@@ -181,7 +177,6 @@ const products = ref([
       image: image9,
       category: 'decoration',
       rate: 4,
-      review: 38,
       count: 0,
       topping: false,
 
@@ -220,7 +215,6 @@ const products = ref([
       price: 29900000,
       category: 'chair',
       rate: 4,
-      review: 38,
       count: 0,
       topping: true,
 
@@ -258,7 +252,6 @@ const products = ref([
       price: 8500000,
       category: 'decoration',
       rate: 5,
-      review: 26,
       count: 0,
       topping: true,
 
@@ -297,7 +290,6 @@ const products = ref([
       price: 2350000,
       category: 'table',
       rate: 3,
-      review: 26,
       count: 0,
       topping: true,
 
@@ -336,7 +328,6 @@ const products = ref([
       price: 1530000,
       category: 'light',
       rate: 5,
-      review: 26,
       count: 0,
       topping: true,
 
