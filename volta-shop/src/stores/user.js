@@ -1,6 +1,7 @@
 import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import axios from 'axios'
+import { useRouter } from 'vue-router'
 
 export const useUserStore = defineStore('user', () => {
   // State
@@ -8,6 +9,7 @@ export const useUserStore = defineStore('user', () => {
   const isLoading = ref(false)
   const apiError = ref('')
   const success = ref('')
+  const router=useRouter()
 
   // Getter
   const isAuthenticated = computed(() => !!token.value)
@@ -89,6 +91,8 @@ export const useUserStore = defineStore('user', () => {
     success.value = ''
 
     localStorage.removeItem('token')
+       router.push('/login')
+
   }
 
   return {
