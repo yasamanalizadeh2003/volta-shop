@@ -10,7 +10,8 @@ defineProps({
 </script>
 
 <template>
-  <div class="bg-white rounded-2xl shadow-sm sm:p-6 p-3 flex-1 shadow-purple-300">
+  <div class="bg-white rounded-2xl shadow-sm sm:p-6 p-3 flex-1 shadow-purple-300" 
+  data-aos="fade-up" data-aos-duration="1000">
     <div class="my-2" v-for="(product, index) in products" :key="product.id">
       <ProductSection :product="product" />
       <hr  v-if="index < products.length - 1" class="border-gray-200 my-2" />

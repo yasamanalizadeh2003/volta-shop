@@ -8,7 +8,7 @@ const formatPrice = (price) => {
 }
 </script>
 <template>
-  <div>
+  <div data-aos="fade-left" data-aos-duration="1000">
     <div
       class="bg-white rounded-2xl mx-3 sm:mr-6 px-3 py-6 sm:px-5 
         shadow-lg shadow-purple-200 flex flex-col gap-2 mb-4"

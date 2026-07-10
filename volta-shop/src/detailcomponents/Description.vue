@@ -17,7 +17,8 @@ function active(index) {
 </script>
 
 <template>
-  <div class="border-2 border-gray-200 rounded-xl mx-2 mt-6 sm:m-14 bg-white">
+  <div class="border-2 border-gray-200 rounded-xl mx-2 mt-6 sm:m-14 bg-white"
+  data-aos="fade-up" data-aos-duration="1000">
     <!-- Tabs -->
     <div
       class="flex items-center justify-between border-b border-gray-200 px-4 sm:px-10"
@@ -55,7 +56,7 @@ function active(index) {
     <!-- Content -->
     <div class="p-6 sm:p-8">
       <!-- Description -->
-      <div
+      <div data-aos="fade-up" data-aos-duration="800"
         v-if="activeTab === 'توضیحات'"
         class="leading-9 text-gray-700"
       >
@@ -63,7 +64,7 @@ function active(index) {
       </div>
 
       <!-- Specifications -->
-      <div v-if="activeTab === 'مشخصات'" class="space-y-3">
+      <div  v-if="activeTab === 'مشخصات'" class="space-y-3" data-aos="fade-up" data-aos-duration="800">
         <div
           v-for="(value, key) in product.specifications"
           :key="key"
@@ -80,7 +81,7 @@ function active(index) {
       </div>
 
       <!-- Reviews -->
-      <div
+      <div data-aos="fade-up" data-aos-duration="800"
         v-if="activeTab === 'نظرات'"
         class="space-y-4"
       >

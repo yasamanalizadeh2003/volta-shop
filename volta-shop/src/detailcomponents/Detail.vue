@@ -50,7 +50,7 @@ const saveReview = () => {
 </script>
 
 <template>
-  <div>
+  <div data-aos="fade-up" data-aos-duration="1000">
     <div class="mt-32 grid grid-cols-2">
       <img class="sm:w-96 sm:h-96 rounded-lg sm:mr-18 w-36 h-36 mr-3" :src="product.image" />
       <div class="flex flex-col gap-2">
