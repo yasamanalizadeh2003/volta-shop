@@ -1,13 +1,12 @@
 <!-- ShopPage.vue -->
 <script setup>
-import { ref, reactive, computed, onMounted, watch } from 'vue'
+import { ref, reactive, computed, watch } from 'vue'
 import FiltersSidebar from '@/shopcomponents/FiltersSidebar.vue'
 import SearchSortBar from '@/shopcomponents/SearchSortBar.vue'
 import ProductGrid from '@/shopcomponents/ProductGrid.vue'
 import { useProductStore } from '@/stores/products'
 
-
-const store=useProductStore()
+const store = useProductStore()
 
 const filters = reactive({
   search: '',
@@ -20,54 +19,86 @@ const filters = reactive({
 const sortBy = ref('newest')
 const currentPage = ref(1)
 
-
-
-
 // فیلتر محصولات
 const filteredProducts = computed(() => {
   let result = [...store.products]
 
   if (filters.search) {
     const term = filters.search.toLowerCase()
-    result = result.filter((p) => p.title.toLowerCase().includes(term))
+    result = result.filter((p) =>
+      p.title.toLowerCase().includes(term)
+    )
   }
 
-  if (filters.category) result = result.filter((p) => p.category === filters.category)
+  if (filters.category) {
+    result = result.filter((p) => p.category === filters.category)
+  }
 
-  result = result.filter((p) => p.price >= filters.minPrice && p.price <= filters.maxPrice)
+  result = result.filter(
+    (p) =>
+      p.price >= filters.minPrice &&
+      p.price <= filters.maxPrice
+  )
 
+  if (sortBy.value === 'price-low') {
+    result.sort((a, b) => a.price - b.price)
+  }
 
-  if (sortBy.value === 'price-low') result.sort((a, b) => a.price - b.price)
-  if (sortBy.value === 'price-high') result.sort((a, b) => b.price - a.price)
+  if (sortBy.value === 'price-high') {
+    result.sort((a, b) => b.price - a.price)
+  }
 
   return result
 })
 
-// صفحه‌بندی
-const itemsPerPage = computed(() => (window.innerWidth < 768 ? 4 : 6))
+// تعداد محصولات هر صفحه
+const itemsPerPage = computed(() => (window.innerWidth < 768 ? 6 : 6))
 
+// محصولات صفحه جاری
 const paginatedProducts = computed(() => {
   const start = (currentPage.value - 1) * itemsPerPage.value
-  const end = start + itemsPerPage.value
-  return filteredProducts.value.slice(start, end)
+  return filteredProducts.value.slice(start, start + itemsPerPage.value)
 })
 
-const totalPages = computed(() => Math.ceil(filteredProducts.value.length / itemsPerPage.value))
+// تعداد صفحات
+const totalPages = computed(() =>
+  Math.ceil(filteredProducts.value.length / itemsPerPage.value)
+)
 
+// تغییر صفحه
 const goToPage = (page) => {
   if (page < 1 || page > totalPages.value) return
+
   currentPage.value = page
-  window.scrollTo({ top: 0, behavior: 'smooth' })
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth',
+  })
 }
 
-// ریست به صفحه اول هنگام تغییر فیلتر
-watch([filters, sortBy], () => {
-  currentPage.value = 1
-})
+// هنگام تغییر فیلتر یا مرتب‌سازی
+watch(
+  [
+    () => filters.search,
+    () => filters.category,
+    () => filters.minPrice,
+    () => filters.maxPrice,
+    sortBy,
+  ],
+  () => {
+    currentPage.value = 1
+
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
+  }
+)
 </script>
 
 <template>
-  <div class="max-w-7xl mx-auto px-4 py-8">
+  <div class="max-w-7xl mx-auto px-4 py-8 mt-14">
     <!-- هدر -->
     <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-8">
       <h1 class="text-3xl font-bold text-gray-800">فروشگاه</h1>
