@@ -37,7 +37,7 @@ const decrease = () => {
     <button
       v-if="product.count === 0"
       @click="addToCart"
-      class="mt-5 w-full px-8 text-white bg-gradient-to-br from-purple-900 to-purple-700 hover:scale-105 transition py-3 rounded-xl"
+      class="mt-5 w-full px-8 text-sm sm:text-base text-white bg-gradient-to-br from-purple-900 to-purple-700 hover:scale-105 transition py-3 rounded-xl"
     >
       افزودن به سبد خرید
     </button>

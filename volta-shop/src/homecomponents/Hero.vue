@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <div class="p-3" data-aos="fade-up" data-aos-duration="1000">
+  <div class="p-3 sm:mt-16 mt-16" data-aos="fade-up" data-aos-duration="1000">
     <div
       class="bg-[#ece9d2] rounded-2xl overflow-hidden flex flex-col-reverse lg:flex-row items-center justify-between"
     >
@@ -22,7 +22,7 @@
         </p>
 
         <RouterLink
-          to="/"
+          to="/shop"
           class="inline-block mt-8 w-full sm:w-auto px-8 py-3 rounded-xl text-white bg-gradient-to-br from-purple-900 to-purple-700 hover:scale-105 transition"
         >
           مشاهده محصولات

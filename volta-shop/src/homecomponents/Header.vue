@@ -12,7 +12,6 @@ const store2 = useProductStore()
 const navLinks = [
   { title: 'خانه', path: '/' },
   { title: 'فروشگاه', path: '/shop' },
-  { title: 'دسته بندی ها', path: '/categories' },
   { title: 'وبلاگ', path: '/blog' },
   { title: 'درباره ما', path: '/about' },
   { title: 'تماس با ما', path: '/contact' },
@@ -20,7 +19,7 @@ const navLinks = [
 </script>
 
 <template>
-  <header class="w-full px-5 sm:px-8 lg:px-10 py-5 sticky top-0 z-50 bg-white shadow-md rounded-xl">
+  <header class="w-full px-5 sm:px-8 lg:px-10 py-5 fixed left-0 right-0 top-0 z-50 bg-white shadow-md rounded-xl">
     <div class="flex items-center justify-between">
       <!-- Logo -->
       <RouterLink to="/">
@@ -98,7 +97,7 @@ const navLinks = [
             عضویت
           </RouterLink>
           <RouterLink
-            to="login"
+            to="/login"
             class="cursor-pointer hover:scale-105 transition py-1 px-2 rounded-lg text-white bg-gradient-to-br from-purple-900 to-purple-700"
           >
             ورود
