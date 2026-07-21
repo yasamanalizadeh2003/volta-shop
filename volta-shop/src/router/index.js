@@ -6,6 +6,7 @@ import Cart from '@/views/Cart.vue'
 
 import { createRouter, createWebHistory } from 'vue-router'
 import ProductDetail from '@/views/ProductDetail.vue'
+import Dashboard from '@/views/Dashboard.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -60,7 +61,13 @@ const router = createRouter({
   name: 'ProductDetails',
   component:ProductDetail,
   meta: { requiresHeader: true, requiresFooter: true },
-}
+},
+{
+      path: '/dashboard',
+      name: 'dashboard',
+      component: Dashboard,
+      meta: { hideHeader: true, hideFooter: true },
+    },
   ],
 })
 
